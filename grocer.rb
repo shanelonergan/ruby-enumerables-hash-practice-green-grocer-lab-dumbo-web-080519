@@ -51,6 +51,7 @@ def checkout(cart, coupons)
   clearance_cart = apply_clearance(coupon_cart)
 
   total = clearance_cart.reduce(0) do | memo, (key, value) |
+    binding.pry
     memo += value[:price]
     memo
   end
