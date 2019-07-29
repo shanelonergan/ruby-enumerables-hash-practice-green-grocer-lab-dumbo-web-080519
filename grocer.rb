@@ -50,13 +50,10 @@ def checkout(cart, coupons)
   coupon_cart = apply_coupons(checkout_cart, coupons)
   clearance_cart = apply_clearance(coupon_cart)
 
-  total = 0
-  clearance_cart.each do | item |
-    total += clearance_cart[:item][:price]
-    binding.binding.pry
-    return total
+  total = clearance_cart.reduce(0) do | memo, (key, value) |
+    memo += value[:price]
   end
-
+  
   if total >= 100
     total = total * 0.9
   end
