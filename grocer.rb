@@ -52,6 +52,7 @@ def checkout(cart, coupons)
 
   total = clearance_cart.reduce(0) do | memo, (key, value) |
     memo += value[:price]
+    memo
   end
   
   if total >= 100
